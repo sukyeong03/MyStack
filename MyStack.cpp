@@ -186,7 +186,7 @@ void MyStack<T>::push(T value) {
             Stack[i] = temp[i];
         Stack[++top] = value;
 
-        size++;
+        Size++;
 
         delete temp;
     }
@@ -228,7 +228,7 @@ void MyStack<T>::push(int location, T value) {
             }
             else Stack[++top] = value; // location이 top + 1인 경우 
             
-            size++;
+            Size++;
 
             delete temp;
         }
@@ -244,4 +244,41 @@ void MyStack<T>::push(int location, T value) {
             else Stack[++top] = value // location이 top + 1인 경우 
         }
     }
+}
+
+template <typename T>
+void MyStack<T>::push_range(T values[], int arrSize) {
+    int i;
+    T *temp; // 임시 스택 값 저장
+
+    if(isFull() || arrSize < ((STACK_SIZE * Size) - top))
+    { // 스택의 크기가 변경되어야 하는 경우
+        std::cout << " Full STACK" << std::endl;
+        temp = new T [(STACK_SIZE * Size) * sizeof(T)];
+
+        for(i = 0; i < (top + 1); i++)
+            temp[i] = Stack[i]; // 기존 스택 내용 옮김
+        delete Stack;
+
+        int n = (arrSize / 10) + 1; // Stack을 배열의 개수에 따라 키울 크기
+        Stack = new T [(STACK_SIZE * (Size + n)) * sizeof(T)];
+
+        for(i = 0; i < (top + 1); i++)
+            Stack[i] = temp[i];
+        
+        for(i = top + 1; i < arrSize; i++)
+            Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+
+        Size = Size + n; // 늘린만큼 Size를 키워줌 
+        top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
+
+        delete temp;
+    }
+    else
+    {
+        for(i = top + 1; i < arrSize; i++)
+            Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+
+        top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
+    } 
 }
