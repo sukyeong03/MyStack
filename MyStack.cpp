@@ -94,26 +94,26 @@ T MyStack<T>::pop() {
         int i;
         T value, *temp;
 
-        if(this->top % STACK_SIZE == 0)
+        if(top % STACK_SIZE == 0)
         {
             std::cout << " CHANGE STACK" << std::endl;
-            value = this->Stack[this->top];
-            temp = new T [STACK_SIZE * (this->Size - 1) * sizeof(T)];
+            value = Stack[top];
+            temp = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
             for(i = 0; i < top; i++)
-                temp[i] = this->Stack[i];
-            delete this->Stack;
-            this->Stack = new T [STACK_SIZE * (this->Size - 1) * sizeof(T)];
+                temp[i] = Stack[i];
+            delete Stack;
+            Stack = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
 
-            for(i = 0; i < this->top; i++)
-                this->Stack[i] = temp[i];
+            for(i = 0; i < top; i++)
+                Stack[i] = temp[i];
             delete temp;
 
-            this->top--;
-            this->Size--;
+            top--;
+            Size--;
             
             return value;
         }
-        else return this->Stack[this->top--];
+        else return Stack[top--];
     }
 }
 
@@ -133,26 +133,26 @@ T MyStack<T>::pop(int location) {
             throw "POP INDEX ERROR";
         }
 
-        if(this->top % STACK_SIZE == 0)
+        if(top % STACK_SIZE == 0)
         {
             std::cout << " CHANGE STACK" << std::endl;
-            value = this->Stack[this->top];
-            temp = new T [STACK_SIZE * (this->Size - 1) * sizeof(T)];
+            value = Stack[top];
+            temp = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
             for(i = 0; i < top; i++)
-                temp[i] = this->Stack[i];
-            delete this->Stack;
-            this->Stack = new T [STACK_SIZE * (this->Size - 1) * sizeof(T)];
+                temp[i] = Stack[i];
+            delete Stack;
+            Stack = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
 
-            for(i = 0; i < this->top; i++)
-                this->Stack[i] = temp[i];
+            for(i = 0; i < top; i++)
+                Stack[i] = temp[i];
             delete temp;
 
-            this->top--;
-            this->Size--;
+            top--;
+            Size--;
             
             return value;
         }
-        else return this->Stack[this->top--];
+        else return Stack[top--];
 
     }
 } 
