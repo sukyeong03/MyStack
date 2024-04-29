@@ -173,7 +173,7 @@ void MyStack<T>::push(T value) {
     T *temp; // 임시 스택 값 저장
 
     if(isFull())
-    {
+    { // 스택의 크기가 변경되어야 하는 경우
         std::cout << " Full STACK" << std::endl;
         temp = new T [(STACK_SIZE * Size) * sizeof(T)];
 
@@ -191,4 +191,57 @@ void MyStack<T>::push(T value) {
         delete temp;
     }
     else Stack[++top] = value; 
+}
+
+template <typename T>
+void MyStack<T>::push(int location, T value) {
+    if (location >= (top + 2))
+    { // 인덱스가 범위에 있지 않을 때
+        throw "Previous index is EMPTY!";
+    }
+    else
+    {
+        int i;
+        T *temp; // 임시 스택 값 저장
+
+        if(isFull())
+        { // 스택의 크기가 변경되어야 하는 경우
+            std::cout << " Full STACK" << std::endl;
+            temp = new T [(STACK_SIZE * Size) * sizeof(T)];
+
+            for(i = 0; i < (top + 1); i++)
+                temp[i] = Stack[i]; // 기존 스택 내용 옮김
+            delete Stack;
+            Stack = new T [(STACK_SIZE * (Size + 1)) * sizeof(T)];
+
+            for(i = 0; i < (top + 1); i++)
+                Stack[i] = temp[i];
+            
+            if(location < top)
+            {
+                int i;
+                for (i = top; i >= location; i--)
+                    Stack[i + 1] = Stack[i];
+                Stack[location] = value;
+
+                top++;
+            }
+            else Stack[++top] = value; // location이 top + 1인 경우 
+            
+            size++;
+
+            delete temp;
+        }
+        else
+        {
+            if(location < top)
+            {
+                for(i = top; i >= location; i--)
+                    Stack[i + 1] = Stack[i];
+                Stack[location] = value;
+                top++;
+            }
+            else Stack[++top] = value // location이 top + 1인 경우 
+        }
+    }
 }
