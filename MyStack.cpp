@@ -95,7 +95,7 @@ T MyStack<T>::pop() {
         T value, *temp;
 
         if(top % STACK_SIZE == 0)
-        {
+        { // 스택의 크기가 변경되어야 하는 경우
             std::cout << " CHANGE STACK" << std::endl;
             value = Stack[top];
             temp = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
@@ -134,9 +134,11 @@ T MyStack<T>::pop(int location) {
         }
 
         if(top % STACK_SIZE == 0)
-        {
+        { // 스택의 크기가 변경되어야 하는 경우
             std::cout << " CHANGE STACK" << std::endl;
-            value = Stack[top];
+            value = Stack[location];
+            for(i = location; i < top; i++)
+                Stack[i] = Stack[i + 1];
             temp = new T [STACK_SIZE * (Size - 1) * sizeof(T)];
             for(i = 0; i < top; i++)
                 temp[i] = Stack[i];
@@ -152,7 +154,15 @@ T MyStack<T>::pop(int location) {
             
             return value;
         }
-        else return Stack[top--];
+        else
+        {
+            value = Stack[location];
+            for(i = location; i < top; i++)
+                Stack[i] = Stack[i + 1];
+            top--;
+
+            return value;
+        }
 
     }
 } 
