@@ -3,9 +3,9 @@
 
 template <typename T>
 MyStack<T>::MyStack() : STACK_SIZE(10) {
-    Stack = new T[STACK_SIZE];
+    Stack = new T [STACK_SIZE];
     top = -1;
-    Size = STACK_SIZE;
+    Size = 1;
 }
 
 template <typename T>
@@ -94,7 +94,7 @@ T MyStack<T>::pop() {
         int i;
         T value, *temp; // 리턴값, 임시 스택의 값 저장
 
-        if(top % STACK_SIZE == 0)
+        if(top % STACK_SIZE == 0 && top != 0)
         { // 스택의 크기가 변경되어야 하는 경우
             std::cout << " CHANGE STACK" << std::endl;
             value = Stack[top];
@@ -133,7 +133,7 @@ T MyStack<T>::pop(int location) {
             throw "POP INDEX ERROR";
         }
 
-        if(top % STACK_SIZE == 0)
+        if(top % STACK_SIZE == 0 && top != 0)
         { // 스택의 크기가 변경되어야 하는 경우
             std::cout << " CHANGE STACK" << std::endl;
             value = Stack[location];
@@ -240,7 +240,7 @@ void MyStack<T>::push(int location, T value) {
                 Stack[location] = value;
                 top++;
             }
-            else Stack[++top] = value // location이 top + 1인 경우 
+            else Stack[++top] = value; // location이 top + 1인 경우 
         }
     }
 }
