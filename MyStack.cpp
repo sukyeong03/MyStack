@@ -219,7 +219,6 @@ void MyStack<T>::push(int location, T value) {
             
             if(location < top)
             {
-                int i;
                 for (i = top; i >= location; i--)
                     Stack[i + 1] = Stack[i];
                 Stack[location] = value;
@@ -251,7 +250,7 @@ void MyStack<T>::push_range(T values[], int arrSize) {
     int i;
     T *temp; // 임시 스택 값 저장
 
-    if(isFull() || arrSize < ((STACK_SIZE * Size) - top))
+    if(isFull() || arrSize >= ((STACK_SIZE * Size) - top))
     { // 스택의 크기가 변경되어야 하는 경우
         std::cout << " Full STACK" << std::endl;
         temp = new T [(STACK_SIZE * Size) * sizeof(T)];
@@ -266,7 +265,7 @@ void MyStack<T>::push_range(T values[], int arrSize) {
         for(i = 0; i < (top + 1); i++)
             Stack[i] = temp[i];
         
-        for(i = top + 1; i < arrSize; i++)
+        for(i = top + 1; i < arrSize + (top + 1); i++)
             Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
 
         Size = Size + n; // 늘린만큼 Size를 키워줌 
@@ -276,9 +275,77 @@ void MyStack<T>::push_range(T values[], int arrSize) {
     }
     else
     {
-        for(i = top + 1; i < arrSize; i++)
+        for(i = top + 1; i < arrSize + (top + 1); i++)
             Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
 
         top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
     } 
+}
+
+template <typename T>
+void MyStack<T>::push_range(int location, T values[], int arrSize) {
+    if (location >= (top + 2))
+    { // 인덱스가 범위에 있지 않을 때
+        throw "Previous index is EMPTY!";
+    }
+    else
+    {
+        int i;
+        T *temp; // 임시 스택 값 저장
+
+        if(isFull() || arrSize >= ((STACK_SIZE * Size) - top))
+        { // 스택의 크기가 변경되어야 하는 경우
+            std::cout << " Full STACK" << std::endl;
+            temp = new T [(STACK_SIZE * Size) * sizeof(T)];
+
+            for(i = 0; i < (top + 1); i++)
+                temp[i] = Stack[i]; // 기존 스택 내용 옮김
+            delete Stack;
+
+            int n = (arrSize / 10) + 1; // Stack을 배열의 개수에 따라 키울 크기
+            Stack = new T [(STACK_SIZE * (Size + n)) * sizeof(T)];
+
+            for(i = 0; i < (top + 1); i++)
+                Stack[i] = temp[i];
+            
+            if(location < top)
+            {
+                for(int j = 0; i < arrSize; j++) // arrSize만큼 location에서 값을 미룸
+                    for (i = top + j; i >= location + j; i--)
+                        Stack[i + 1] = Stack[i];
+
+                for(i = top + 1; i < arrSize + (top + 1); i++)
+                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+            }
+            else
+            { // location이 top + 1인 경우 
+            for(i = top + 1; i < arrSize + (top + 1); i++)
+                Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+            }
+
+            Size = Size + n; // 늘린만큼 Size를 키워줌 
+            top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
+            
+            delete temp;
+        }
+        else
+        {
+            if(location < top)
+            {
+                for(int j = 0; i < arrSize; j++) // arrSize만큼 location에서 값을 미룸
+                    for (i = top + j; i >= location + j; i--)
+                        Stack[i + 1] = Stack[i];
+
+                for(i = top + 1; i < arrSize + (top + 1); i++)
+                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+            }
+            else
+            { // location이 top + 1인 경우 
+                for(i = top + 1; i < arrSize + (top + 1); i++)
+                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+            }
+
+            top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
+        }
+    }
 }
