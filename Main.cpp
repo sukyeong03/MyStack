@@ -4,10 +4,10 @@ using namespace std;
 #include "MyStack.h"
 
 int main(void) {
-    MyStack<int> intStack;
+    MyStack<char> intStack;
     try{
-        intStack.push(100);
-        intStack.push(200);
+        intStack.push('a');
+        intStack.push('b');
         cout << intStack.pop() << endl;
         cout << intStack.pop() << endl;
         cout << intStack.pop() << endl;
