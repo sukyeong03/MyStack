@@ -4,7 +4,7 @@ using namespace std;
 #include "MyStack.h"
 
 int main(void) {
-    MyStack <int>intStack;
+    MyStack<int> intStack;
     try{
         intStack.push(100);
         intStack.push(200);
