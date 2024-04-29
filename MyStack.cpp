@@ -92,7 +92,7 @@ T MyStack<T>::pop() {
     else
     {
         int i;
-        T value, *temp;
+        T value, *temp; // 리턴값, 임시 스택의 값 저장
 
         if(top % STACK_SIZE == 0)
         { // 스택의 크기가 변경되어야 하는 경우
@@ -126,7 +126,7 @@ T MyStack<T>::pop(int location) {
     else
     {
         int i;
-        T value, *temp;
+        T value, *temp; // 리턴값, 임시 스택의 값 저장
 
         if(location < 0 || location > top)
         { //인덱스가 스택 범위 내 있지 않을때
@@ -166,3 +166,29 @@ T MyStack<T>::pop(int location) {
 
     }
 } 
+
+template <typename T>
+void MyStack<T>::push(T value) {
+    int i;
+    T *temp; // 임시 스택 값 저장
+
+    if(isFull())
+    {
+        std::cout << " Full STACK" << std::endl;
+        temp = new T [(STACK_SIZE * Size) * sizeof(T)];
+
+        for(i = 0; i < (top + 1); i++)
+            temp[i] = Stack[i]; // 기존 스택 내용 옮김
+        delete Stack;
+        Stack = new T [(STACK_SIZE * (Size + 1)) * sizeof(T)];
+
+        for(i = 0; i < (top + 1); i++)
+            Stack[i] = temp[i];
+        Stack[++top] = value;
+
+        size++;
+
+        delete temp;
+    }
+    else Stack[++top] = value; 
+}
