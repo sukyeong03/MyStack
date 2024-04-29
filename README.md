@@ -33,4 +33,8 @@
 7. 기한은 5월 20일까지
 
 8. 예제는 charter과 int형만 보여줌
-# MyStack
+   
+## MyStack
+1. MyStack.h에 MyStack 클래스 선언및 멤버 함수 구현
+
+2.  Main.cpp에 MyStack.h를 추가해서 사용 가능
