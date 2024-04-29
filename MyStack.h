@@ -1,5 +1,5 @@
-#ifdef STACK_H
-#define STACK_H
+#ifndef MYSTACK_H
+#define MYSTACK_H
 
 template <typename T>
 class MyStack {
@@ -12,8 +12,8 @@ class MyStack {
     void quickSort(T arr[], int low, int high); // 퀵 정렬
     int partition(T arr[], int low, int high); // 분할
 public: 
-    stack(); // 생성자 실행시 STACJ_SIZE 10으로 동적 할당
-    ~stack(); // 소멸자 실행 시 스택 반환
+    MyStack(); // 생성자 실행시 STACJ_SIZE 10으로 동적 할당
+    ~MyStack(); // 소멸자 실행 시 스택 반환
     int capacity(); // Stack Max Size
     int size(); // Stack Max Size - top
     void printStack(); // Stack capacity,  저장값 출력
