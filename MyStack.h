@@ -68,10 +68,10 @@ template <typename T>
 void MyStack<T>::printStack() {
     int i;
     std::cout << " STACK SIZE [" << STACK_SIZE * Size << "]" << std::endl;
-    std::cout << " STACK [ " << std::endl;
+    std::cout << " STACK [ ";
     for(i = 0; i <= top; i++)
         std::cout << Stack[i] << " ";
-    std::cout << " ] "<< std::endl; 
+    std::cout << "] "<< std::endl; 
 }
 
 template <typename T>
@@ -98,7 +98,7 @@ void MyStack<T>::quickSort(T arr[], int low, int high) {
 
 template<typename T>
 int MyStack<T>::partition(T arr[], int low, int high) {
-    T pivot = arr[high / 2]; 
+    T pivot = arr[high]; 
     int i = low - 1; // 피벗보다 작은 요소들의 마지막 인덱스
 
     for (int j = low; j < high; j++) {
