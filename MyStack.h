@@ -67,7 +67,8 @@ bool MyStack<T>::isFull() {
 
 template <typename T>
 int MyStack<T>::arraySize(T values[]) {
-    return sizeof(values) / sizeof(T);
+    int size = sizeof(values) / sizeof(T);
+    return size;
 }
 
 template <typename T>
