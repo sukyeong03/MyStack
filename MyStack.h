@@ -248,7 +248,7 @@ void MyStack<T>::push(int location, T value) {
             for(i = 0; i < (top + 1); i++)
                 Stack[i] = temp[i];
             
-            if(location < top)
+            if(location <= top)
             {
                 for (i = top; i >= location; i--)
                     Stack[i + 1] = Stack[i];
@@ -264,7 +264,7 @@ void MyStack<T>::push(int location, T value) {
         }
         else
         {
-            if(location < top)
+            if(location <= top)
             {
                 for(i = top; i >= location; i--)
                     Stack[i + 1] = Stack[i];
@@ -339,19 +339,20 @@ void MyStack<T>::push_range(int location, T values[], int arrSize) {
             for(i = 0; i < (top + 1); i++)
                 Stack[i] = temp[i];
             
-            if(location < top)
+            if(location <= top)
             {
-                for(int j = 0; i < arrSize; j++) // arrSize만큼 location에서 값을 미룸
+                for(int j = 0; j < arrSize; j++) { // arrSize만큼 location에서 값을 미룸
                     for (i = top + j; i >= location + j; i--)
                         Stack[i + 1] = Stack[i];
+                }
 
-                for(i = top + 1; i < arrSize + (top + 1); i++)
-                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+                for(i = location; i < arrSize + location; i++)
+                    Stack[i] = values[i - location]; // Stack의 location위치부터 값을 넣음
             }
             else
             { // location이 top + 1인 경우 
-            for(i = top + 1; i < arrSize + (top + 1); i++)
-                Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+            for(i = location; i < arrSize + location; i++)
+                Stack[i] = values[i - location]; // Stack의 top + 1위치부터 값을 넣음
             }
 
             Size = Size + n; // 늘린만큼 Size를 키워줌 
@@ -361,19 +362,20 @@ void MyStack<T>::push_range(int location, T values[], int arrSize) {
         }
         else
         {
-            if(location < top)
+            if(location <= top)
             {
-                for(int j = 0; i < arrSize; j++) // arrSize만큼 location에서 값을 미룸
+                for(int j = 0; j < arrSize; j++) { // arrSize만큼 location에서 값을 미룸
                     for (i = top + j; i >= location + j; i--)
                         Stack[i + 1] = Stack[i];
+                }
 
-                for(i = top + 1; i < arrSize + (top + 1); i++)
-                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+                for(i = location; i < arrSize + location; i++)
+                    Stack[i] = values[i - location]; // Stack의 location위치부터 값을 넣음
             }
             else
             { // location이 top + 1인 경우 
-                for(i = top + 1; i < arrSize + (top + 1); i++)
-                    Stack[i] = values[i - (top + 1)]; // Stack의 top + 1위치부터 값을 넣음
+                for(i = location; i < arrSize + location; i++)
+                    Stack[i] = values[i - location]; // Stack의 top + 1위치부터 값을 넣음
             }
 
             top = top + arrSize; // top을 원소 넣은 개수만큼 늘려줌
