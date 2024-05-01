@@ -18,7 +18,6 @@ public:
     int size(); // Stack Max Size - top
     void printStack(); // Stack capacity,  저장값 출력
     void sort(); // 오름차순 정렬
-    int arraySize(T values[]); // 범위 값 push시 arrSize
 
     void push(T value); // top + 1에 push
     void push(int location, T value); // location에 값 push
@@ -63,12 +62,6 @@ template <typename T>
 bool MyStack<T>::isFull() {
     if(top % STACK_SIZE == 9) return true;
     else return false;
-}
-
-template <typename T>
-int MyStack<T>::arraySize(T values[]) {
-    int size = sizeof(values) / sizeof(T);
-    return size;
 }
 
 template <typename T>
