@@ -72,7 +72,13 @@ void MyStack<T>::printStack() {
     std::cout << " STACK SIZE [" << STACK_SIZE * Size << "]" << std::endl;
     std::cout << " STACK [ ";
     for(i = 0; i <= top; i++)
+    {
+        /* STACK_SIZE 뛰어쓰기
+        if(i % STACK_SIZE == 0)
+            std::cout << " \t" << std::endl;
+        */
         std::cout << Stack[i] << " ";
+    }
     std::cout << "] "<< std::endl; 
 }
 
@@ -290,7 +296,13 @@ void MyStack<T>::push_range(T values[], int arrSize) {
             temp[i] = Stack[i]; // 기존 스택 내용 옮김
         delete Stack;
 
-        int n = (arrSize / 10) + 1; // Stack을 배열의 개수에 따라 키울 크기
+        int n = 0; // Stack을 배열의 개수에 따라 키울 크기 (초기값은 0)
+        for(i = arrSize; i > 0; i -= STACK_SIZE)
+        { // 스택의 남아있는 공간이 넣어야할 값들의 개수보다 큰 경우
+            if(i >= (STACK_SIZE * Size) - (top + 1))
+                n++;
+        }
+
         Stack = new T [(STACK_SIZE * (Size + n)) * sizeof(T)];
 
         for(i = 0; i < (top + 1); i++)
@@ -333,7 +345,12 @@ void MyStack<T>::push_range(int location, T values[], int arrSize) {
                 temp[i] = Stack[i]; // 기존 스택 내용 옮김
             delete Stack;
 
-            int n = (arrSize / 10) + 1; // Stack을 배열의 개수에 따라 키울 크기
+            int n = 0; // Stack을 배열의 개수에 따라 키울 크기 (초기값은 0)
+            for(i = arrSize; i > 0; i -= STACK_SIZE)
+            { // 스택의 남아있는 공간이 넣어야할 값들의 개수보다 큰 경우
+                if(i >= (STACK_SIZE * Size) - (top + 1))
+                    n++;
+            }
             Stack = new T [(STACK_SIZE * (Size + n)) * sizeof(T)];
 
             for(i = 0; i < (top + 1); i++)
