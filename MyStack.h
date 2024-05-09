@@ -29,8 +29,6 @@ public:
     T pop(); // top에 pop
     T pop(int location); // location pop
 };
-#include <iostream>
-#include "MyStack.h"
 
 template <typename T>
 MyStack<T>::MyStack() : STACK_SIZE(10) {
