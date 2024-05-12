@@ -14,7 +14,12 @@ void Exceptions(Func f) {
 } 
 
 int main(void) {
-    // MyStack<int> intStack;
-    // MyStack<char> charStack;
+    MyStack<int> intStack; // 정수형 스택
+    MyStack<char> charStack; // 문자형 스택
     
+    // 람다 함수를 사용하여 push 함수 호출을 래핑하여 전달
+    Exceptions([&]() {
+        intStack.push(0, 10);
+    });
+
 }
