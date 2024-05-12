@@ -3,16 +3,18 @@ using namespace std;
 
 #include "MyStack.h"
 
-int main(void) {
-    MyStack<char> intStack;
-    try{
-        intStack.push('a');
-        intStack.push('b');
-        cout << intStack.pop() << endl;
-        cout << intStack.pop() << endl;
-        cout << intStack.pop() << endl;
-    }
-    catch(const char* s) {
+// 예외 처리를 담당하는 함수
+template <typename Func>
+void Exceptions(Func f) {
+    try {
+        f(); // 전달된 함수 실행
+    }  catch(const char* s) {
         cout << "예외발생 : " << s << endl;
     }
+} 
+
+int main(void) {
+    // MyStack<int> intStack;
+    // MyStack<char> charStack;
+    
 }
