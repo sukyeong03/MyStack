@@ -436,7 +436,7 @@ void MyStack<T>::pushE(int location, T value) {
 template <typename T>
 void MyStack<T>::push_rangeE(int location, T values[], int arrSize) {
     try {
-        push(location, values, arrSize); // 전달된 함수 실행
+        push_range(location, values, arrSize); // 전달된 함수 실행
     }  catch(const char* s) {
         cout << "예외발생 : " << s << endl;
     }
