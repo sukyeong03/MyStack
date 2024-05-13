@@ -206,27 +206,28 @@ T MyStack<T>::pop(int location) {
 
             return value;
         }
-
     }
 } 
 
 template <typename T>
 T MyStack<T>::popE() {
     try {
-        pop(); // 전달된 함수 실행
+        return pop(); // 전달된 함수 실행
     }  catch(const char* s) {
         cout << "예외발생 : " << s << endl;
+        return T(); // 타입 T의 기본값 반환
     }
-};
+}
 
 template <typename T>
 T MyStack<T>::popE(int location) {
     try {
-        pop(location); // 전달된 함수 실행
+        return pop(location); // 전달된 함수 실행
     }  catch(const char* s) {
         cout << "예외발생 : " << s << endl;
+        return T(); // 타입 T의 기본값 반환 
     }
-};
+}
 
 template <typename T>
 void MyStack<T>::push(T value) {
