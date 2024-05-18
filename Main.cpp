@@ -11,33 +11,35 @@ int main(void) {
 
     하나
 
-    cout << "수용량 " << intStack.capacity() << endl;
-    cout << "크기 " << intStack.size() << endl;
+    cout << "수용량 " << charStack.capacity() << endl;
+    cout << "크기 " << charStack.size() << endl;
 
     for(int i = 0; i < 15; i++)
-        intStack.push(i);
+        charStack.push(65 + i);
+    for(int i = 0; i < 14; i++)
+        charStack.popE();
 
-    cout << "수용량 " << intStack.capacity() << endl;
-    cout << "크기 " << intStack.size() << endl;
+    cout << "수용량 " << charStack.capacity() << endl;
+    cout << "크기 " << charStack.size() << endl;
 
     둘
 
-    intStack.push(30);
-    intStack.push(19);
-    intStack.push(41);
-    intStack.push(63);
-    intStack.push(3);
-    intStack.push(99);
-    intStack.push(83);
-    intStack.push(22);
-    intStack.push(77);
-    intStack.push(681);
-    intStack.push(492);
-    intStack.push(45);
-    intStack.printStack();
+    charStack.push('e');
+    charStack.push('n');
+    charStack.push('t');
+    charStack.push('h');
+    charStack.push('u');
+    charStack.push('s');
+    charStack.push('i');
+    charStack.push('a');
+    charStack.push('s');
+    charStack.push('t');
+    charStack.push('i');
+    charStack.push('c');
+    charStack.printStack();
 
-    intStack.sort();
-    intStack.printStack();
+    charStack.sort();
+    charStack.printStack();
 
     셋
 
