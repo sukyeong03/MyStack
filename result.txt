@@ -3,8 +3,9 @@
 수용량 10
 크기 0
  Full STACK
-수용량 20
-크기 15
+ CHANGE STACK
+수용량 10
+크기 1
 
 둘
 
