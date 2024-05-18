@@ -43,74 +43,70 @@ int main(void) {
 
     셋
 
-    int one [] = {1, 11, 27, 31, 36};
-    int two [] = {9, 100, 56, 76, 89, 12, 92, 66, 28, 10};
+    char one[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'};
+    char two[] = {'p', 'r', 'o', 'g', 'r', 'a', 'm'};
 
+    charStack.push('Y');
+    charStack.push_range(one, sizeof(one)/sizeof(one[0]));
+    charStack.printStack();
 
-    intStack.push_range(one, sizeof(one) / sizeof(one[0]));
-    intStack.printStack();
-
-    intStack.push(30);
-    intStack.push_range(one, sizeof(one) / sizeof(one[0]));
-    intStack.printStack();
-
-    intStack.push_range(two, sizeof(two) / sizeof(two[0]));
-    intStack.printStack();
+    charStack.push_range(two, sizeof(two)/sizeof(two[0]));
+    charStack.printStack();
 
     넷
 
-    for(int i = 1; i < 5; i++) {
-        intStack.push(i);
+    for(int i = 0; i < 5; i++) {
+        charStack.push(65 + i);
     }
-    for(int i = 50; i < 57; i++) {
-        intStack.pushE(1, i);
-        intStack.pushE(i, 10);
+    for(int i = 90; i > 83; i--) {
+        charStack.pushE(1, i);
+        charStack.pushE(i, 'R');
     }
-    intStack.printStack();
+    charStack.printStack();
 
     다섯
 
-    int one [] = {35, 36, 37, 38, 39};
-    int two [] = {999, 888, 777};
+    char one[] = {'a', 'b', 'c', 'd'};
+    char two[] = {'x', 'y', 'z'};
+    char three[] = {'p', 'r', 'o', 'g', 'r', 'a', 'm'};
 
-    for(int i = 0; i < 5; i++) {
-        intStack.push(i);
-    }
+    charStack.push_rangeE(0, two, sizeof(two)/sizeof(two[0]));
+    charStack.printStack();
+    
+    charStack.push_rangeE(1, one, sizeof(one)/sizeof(one[0]));
+    charStack.push_rangeE(20, two, sizeof(two)/sizeof(two[0]));
+    charStack.printStack();
 
-    intStack.push_rangeE(3, one, sizeof(one) / sizeof(one[0]));
-    intStack.push_rangeE(20, one, sizeof(one) / sizeof(one[0]));
-    intStack.printStack();
-
-    intStack.push_rangeE(10, two, sizeof(two) / sizeof(two[0]));
-    intStack.printStack();
+    charStack.push_rangeE(7, three, sizeof(three)/sizeof(three[0]));
+    charStack.printStack();
 
     여섯
 
-    for(int i = 1; i < 12; i++) {
-        intStack.push(i);
+    charStack.popE();
+    for(int i = 65; i < 76; i++) {
+        charStack.push(i);
     }
-    intStack.printStack();
+    charStack.printStack();
 
-    for(int i = 0; i < 3; i++) {
-        intStack.popE();
+    for(int i = 0; i < 4; i++) {
+        charStack.popE();
     }
-    intStack.printStack();
+    charStack.printStack()
 
     일곱
 
-    intStack.popE(3);
-    for(int i = 1; i < 12; i++) {
-        intStack.push(i);
+    charStack.popE(3);
+    for(int i = 65; i < 76; i++) {
+        charStack.push(i);
     }
-    intStack.printStack();
+    charStack.printStack();
 
-    for(int i = 0; i < 5; i++) {
-        intStack.popE(1);
+    for(int i = 0; i < 4; i++) {
+        charStack.popE(1);
     }
-    intStack.printStack();
-    intStack.popE(2);
-    intStack.popE(11);
-    intStack.printStack();
+    charStack.popE(3);
+    charStack.popE(4);
+    charStack.printStack();
 
 
 
