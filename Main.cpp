@@ -11,14 +11,14 @@ int main(void) {
 
     하나
 
-    cout << "수용량" << intStack.capacity() << endl;
-    cout << "크기" << intStack.size() << endl;
+    cout << "수용량 " << intStack.capacity() << endl;
+    cout << "크기 " << intStack.size() << endl;
 
     for(int i = 0; i < 15; i++)
         intStack.push(i);
 
-    cout << "수용량" << intStack.capacity() << endl;
-    cout << "크기" << intStack.size() << endl;
+    cout << "수용량 " << intStack.capacity() << endl;
+    cout << "크기 " << intStack.size() << endl;
 
     둘
 
