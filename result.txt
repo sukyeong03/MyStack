@@ -9,22 +9,20 @@
 
 둘
 
-Full STACK
-STACK SIZE [20]
-STACK [ 30 19 41 63 3 99 83 22 77 681 492 45 ]
-STACK SIZE [20]
-STACK [ 3 19 22 30 41 45 63 77 83 99 492 681 ]
-
-셋
- STACK SIZE [10]
- STACK [ 1 11 27 31 36 ] 
  Full STACK
  STACK SIZE [20]
- STACK [ 1 11 27 31 36 30 1 11 27 31 36 ] 
- Full STACK
- STACK SIZE [30]
- STACK [ 1 11 27 31 36 30 1 11 27 31 36 9 100 56 76 89 12 92 66 28 10 ] 
+ STACK [ e n t h u s i a s t i c ] 
+ STACK SIZE [20]
+ STACK [ a c e h i i n s s t t u ] 
 
+셋
+
+ STACK SIZE [10]
+ STACK [ Y a b c d e f g h i ] 
+ Full STACK
+ STACK SIZE [20]
+ STACK [ Y a b c d e f g h i p r o g r a m ] 
+ 
 넷
 
 예외발생 : Previous index is EMPTY!
@@ -32,38 +30,41 @@ STACK [ 3 19 22 30 41 45 63 77 83 99 492 681 ]
 예외발생 : Previous index is EMPTY!
 예외발생 : Previous index is EMPTY!
 예외발생 : Previous index is EMPTY!
+ Full STACK
 예외발생 : Previous index is EMPTY!
-  Full STACK
 예외발생 : Previous index is EMPTY!
  STACK SIZE [20]
- STACK [ 1 56 55 54 53 52 51 50 2 3 4 ]
+ STACK [ A B T U V W X Y Z C D E ] 
 
 다섯
 
+ STACK SIZE [10]
+ STACK [ x y z ] 
 예외발생 : Previous index is EMPTY!
  STACK SIZE [10]
- STACK [ 0 1 2 35 36 37 38 39 3 4 ] 
+ STACK [ x a b c d y z ] 
  Full STACK
  STACK SIZE [20]
- STACK [ 0 1 2 35 36 37 38 39 3 4 999 888 777 ] 
+ STACK [ x a b c d y z p r o g r a m ] 
 
 여섯
 
+예외발생 : Stack is empty
  Full STACK
  STACK SIZE [20]
- STACK [ 1 2 3 4 5 6 7 8 9 10 11 ] 
+ STACK [ A B C D E F G H I J K ] 
  CHANGE STACK
  STACK SIZE [10]
- STACK [ 1 2 3 4 5 6 7 8 ]
+ STACK [ A B C D E F G ]
 
 일곱
 
 예외발생 : Stack is empty
  Full STACK
  STACK SIZE [20]
- STACK [ 1 2 3 4 5 6 7 8 9 10 11 ] 
+ STACK [ A B C D E F G H I J K ] 
  CHANGE STACK
-예외발생 : POP INDEX ERROR
  STACK SIZE [10]
- STACK [ 1 7 9 10 11 ] 
+ STACK [ A F G I K ] 
+
 
